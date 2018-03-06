@@ -11,11 +11,10 @@ use App\Tasklist;    // 追加
 
 class TasklistsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    
+    
+    
     public function index()
     {
         $tasklists = Tasklist::all();
@@ -25,11 +24,9 @@ class TasklistsController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    
+    
     public function create()
     {
         $tasklist = new Tasklist;
@@ -39,27 +36,26 @@ class TasklistsController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
+   
+   
        public function store(Request $request)
     {
+        $this->validate($request, [
+            'status' => 'required',   // 追加
+        ]);
+        
         $tasklist = new Tasklist;
+        $tasklist->status = $request->status;
         $tasklist->content = $request->content;
         $tasklist->save();
 
         return redirect('/');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
+    
+    
     public function show($id)
     {
         $tasklists = Tasklist::find($id);
@@ -97,28 +93,24 @@ class TasklistsController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
      public function update(Request $request, $id)
     {
+         $this->validate($request, [
+            'status' => 'required',   // 追加
+        ]);
+        
         $tasklist = Tasklist::find($id);
+        $tasklist->status = $request->status;
         $tasklist->content = $request->content;
         $tasklist->save();
 
         return redirect('/');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
+    
+    
     public function destroy($id)
     {
         $tasklist = Tasklist::find($id);
