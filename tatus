@@ -1,0 +1,49 @@
+[1mdiff --git a/database/migrations/2018_02_25_201228_create_tasklists_table.php b/database/migrations/2018_02_25_201228_create_tasklists_table.php[m
+[1mindex a5f5a44..b07b17c 100644[m
+[1m--- a/database/migrations/2018_02_25_201228_create_tasklists_table.php[m
+[1m+++ b/database/migrations/2018_02_25_201228_create_tasklists_table.php[m
+[36m@@ -17,7 +17,6 @@[m [mclass CreateTasklistsTable extends Migration[m
+         Schema::create('tasklists', function (Blueprint $table) {  [m
+             $table->increments('id');     //tasklistsはテーブル名[m
+             $table->string('content');    // content カラム追加[m
+[31m-            $table->string('status',10);[m
+             $table->timestamps();[m
+         });[m
+     }[m
+[1mdiff --git a/database/migrations/2018_03_07_000958_add_title_to_tasklists_table.php b/database/migrations/2018_03_07_000958_add_title_to_tasklists_table.php[m
+[1mdeleted file mode 100644[m
+[1mindex 263b1cb..0000000[m
+[1m--- a/database/migrations/2018_03_07_000958_add_title_to_tasklists_table.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,31 +0,0 @@[m
+[31m-<?php[m
+[31m-[m
+[31m-use Illuminate\Database\Schema\Blueprint;[m
+[31m-use Illuminate\Database\Migrations\Migration;[m
+[31m-[m
+[31m-class AddTitleToTasklistsTable extends Migration[m
+[31m-{[m
+[31m-    /**[m
+[31m-     * Run the migrations.[m
+[31m-     *[m
+[31m-     * @return void[m
+[31m-     */[m
+[31m-    public function up()[m
+[31m-    {[m
+[31m-        Schema::table('tasklists', function (Blueprint $table) {[m
+[31m-            //[m
+[31m-        });[m
+[31m-    }[m
+[31m-[m
+[31m-    /**[m
+[31m-     * Reverse the migrations.[m
+[31m-     *[m
+[31m-     * @return void[m
+[31m-     */[m
+[31m-    public function down()[m
+[31m-    {[m
+[31m-        Schema::table('tasklists', function (Blueprint $table) {[m
+[31m-            $table->dropColumn('status');[m
+[31m-        });[m
+[31m-    }[m
+[31m-}[m

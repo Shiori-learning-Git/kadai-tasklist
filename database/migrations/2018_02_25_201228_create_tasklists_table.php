@@ -17,7 +17,6 @@ class CreateTasklistsTable extends Migration
         Schema::create('tasklists', function (Blueprint $table) {  
             $table->increments('id');     //tasklistsはテーブル名
             $table->string('content');    // content カラム追加
-            $table->string('status',10);
             $table->timestamps();
         });
     }
